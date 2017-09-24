@@ -16,6 +16,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
+import java.text.DecimalFormat;
 import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.*;
@@ -30,7 +31,9 @@ import javax.swing.border.Border;
 public class EjerArea extends javax.swing.JFrame implements ActionListener {
     
     ImageIcon imagen, icono;
-    int n=0,i,b, cant;
+    int n=0,i,b, cant,caenadentro=0;
+    DecimalFormat area=new DecimalFormat();
+    String ar;
     /**
      * Creates new form EjerArea
      */
@@ -184,8 +187,12 @@ public class EjerArea extends javax.swing.JFrame implements ActionListener {
         i=((5*i)+1)%220;
         b=((5*i)+1)%220;
         papel.fillOval(i, b, 5, 5);
+        if(i>=60&&i<=160&&b>=60&&b<=160)
+          caenadentro++;  
         n++;
         }
+        ar=area.format(((double)caenadentro/(double)cant)*48400);
+        JOptionPane.showMessageDialog(null,"Los numero que caen dentro de la imagen son: "+caenadentro+" y su area es: "+ar);
     }//GEN-LAST:event_generadorActionPerformed
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
